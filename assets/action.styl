@@ -1,0 +1,140 @@
+// >>> ACTIONS ====
+
+
+item-btn(clr)
+  background clr
+  border-color clr
+  &:hover
+    background clr + 10
+
+
+//https://tympanus.net/Development/ButtonStylesInspiration/
+//Moema
+//Wapasha
+//Antiman
+//Sacnite
+
+
+
+
+@keyframes Ups
+  50%
+    transform translateX(3px) rotate(1deg)
+  100%
+    transform translateX(-3px) rotate(-1deg)
+
+.btn, button
+  line-height: 1;
+  padding .7em 1em
+  
+  border 2px solid $blue
+  color #fff
+  background $blueL
+ 
+  white-space: nowrap;
+  display inline-block
+  margin .5em
+
+  text-decoration none
+  cursor pointer
+  border-radius 6px
+  letter-spacing 1px
+  box-shadow 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)
+
+  //transition transform 0.15s ease-out 0s
+  &:hover
+    background $blue //+ 10
+    //transform: translateY(-2px)
+
+  
+  
+
+  &.-red
+    item-btn($red)
+  &.-green
+    item-btn($green)
+  &.-orange
+    item-btn($orange)
+
+
+  &.-lite
+    background #FFF
+    color #BBB
+    border-color #FFF
+    &:hover
+      //border-color $blue
+      color $blue
+
+  &.-circle
+    border-radius: 3em;
+  &.-XL
+    padding .7em 1.2em
+    font-size 1.2em
+
+  &[disabled]
+    border-color #9e9e9e //#AAA
+    background #EEE
+    color #CCC
+    cursor wait
+    &:hover
+      animation Ups .15s infinite	//ease-in
+
+
+
+/*
+a, .link
+  color $blue
+  text-decoration: none
+  transition: color .3s
+  &.circle
+    padding: .7em 1.4em
+    border: 2px solid $blue
+    border-radius: 3em
+    transition: all .3s
+    &:hover
+      color #FFF
+      background: $blue
+.link, .circle
+  display: inline-block
+
+button
+  border 0
+  cursor: pointer
+  color: #FFF
+
+  &.btn
+    background: $blue
+    font-size 1.2em
+    margin .4em 0
+    &:hover
+      background: $blue - 12%
+
+button, a.btn
+  border-bottom 3px solid rgba(#000 .1)
+  border-radius .4em
+
+  padding .4em 1em
+  transition: background .3s
+  &:hover
+    border-bottom-color rgba(#000 .3)
+
+a.green
+  background: $green
+  //padding: .5em 1em
+  &:hover
+    background: $green - 8%
+
+a.btn
+  display inline-block
+  white-space: nowrap
+
+  color #FFF
+  text-decoration none !important
+
+button, .btn
+  &[disabled]
+    background #e4e4e4
+    color #262626 !important
+    cursor wait //progress
+
+*/
