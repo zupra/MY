@@ -4,44 +4,38 @@
 
 div
 
+  .flex
+    img.HUE(src="/img/pic/glaz.jpg", alt="")
+    div
+      p Надо бы универсально, для переиспользования
+      p Пока вот как-то... попроще, - чтоб не залипнуть
+      p И <b>контраст</b> пониже, чтоб глаза не напрягать 
 
-  hr
-  //Color
+  //Color '#63C0C7','#9DAFC5'
+  //['#607d8b','#3c4858','#477dca','#f05f5c','#26a69a','#2d91e0','#5d9cec','#f59945','#ffd700']
   #palette.flex_wr
-    each clr in ['#607d8b','#3c4858','#477dca','#f05f5c','#26a69a','#2d91e0','#5d9cec','#f59945','#ffd700']
+    each clr in ['#ff8383','#82c8a0','#bed4e3','#ffa07a','#C4D1CC']
       figure
         div(style="width:5em;height:4em;background-color:"+clr)
         figcaption #{clr}
 
+
+
+
   hr
   //Actions
-  each link in ['btn','btn -red','btn -green','btn -orange','btn -lite','btn -lite -circle','btn -red -circle','btn -XL','btn -XL -circle','btn -red -XL -circle']
+  each link in ['btn','btn -red','btn -green','btn -orange','btn -lite','btn -lite -circle','btn -red -circle','btn -XL','btn -XL -circle','btn -orange -XL -circle']
     button(class=""+link) #{link}
   button(disabled) disabled
 
 
-
-
-
-
-  //- div(style="height: 420px; margin: 2em 0")
-  //-   p.codepen(data-height='420', data-theme-id='0', data-slug-hash='BZLqGv', data-default-tab='result', data-user='dimaZubkov', data-embed-version='2', data-pen-title='Flexbox Overview')
-  //-     | See the Pen 
-  //-     a(href='https://codepen.io/dimaZubkov/pen/BZLqGv/') Flexbox Overview
-  //-     |  by Dima (
-  //-     a(href='https://codepen.io/dimaZubkov') @dimaZubkov
-  //-     | ) on 
-  //-     a(href='https://codepen.io') CodePen
-  //-     | .
-  //-   script(async='', src='https://production-assets.codepen.io/assets/embed/ei.js')
-
   hr
 
 
-
-
   //form
-  .form.flex_col
+  p 
+    i.tag .form (.flex_col)
+  .form
     input(placeholder="base input")
     input.search(placeholder="input .search")
     input.-XL(placeholder="input -XL")
@@ -100,42 +94,31 @@ div
 
 
   h3 
-    i.tag nav.card
+    i.tag flex-start nav.Card ul.Card
   .flex(style="align-items: flex-start")
-    nav.card
+    nav.Card
       each link in ['Mark as important','Create event','Restore contacts']
         a(href="#")= link
-    nav.card
+      a.active(href="#") Lorem ipsum
+    nav.Card
       each item in [1,2,3,4,5]
         a(href="#") link_#{item}
 
+    ul.Card
+      li.active На Волне Yum.fm
+      li Радио Best FM
+      li Радио ENERGY
+      li Rock FM 95.2
+      li Радио ПАССАЖ
+      li Радио Maximum
+      li Авторадио
+      li Зайцев FM
 
 
-  //- h3 
-  //-   i.tag .flex_sb
-  //- .flex_sb
-  //-   each item in [1,2,3]
-  //-     img(src="/img/shop/"+item+".jpg")
+
 
   hr
 
-  button(@click="showModal_1 = true") Show Modal(toCenter)
-  button(@click="showModal_2 = true") Small Modal
-  button(@click="showModal_3 = true") Large Modal
-  button(@click="showModal_4 = true") Right Modal
-
-  //v-if="showModal",
-  modal(:show.sync="showModal_1", size="toCenter")
-    //h1 1
-
-  modal(:show.sync="showModal_2", size="SM")
-    //h1 2
-
-  modal(:show.sync="showModal_3", size="XL")
-    //h1 3
-  
-  r-modal(:show.sync="showModal_4")
-     p Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis explicabo porro, voluptatum laborum cumque molestiae quibusdam accusamus sed, quam sint ducimus libero distinctio? Dolore laborum, quos dolorem recusandae deleniti quasi.
 
 
 
@@ -143,33 +126,28 @@ div
 
 <script>
 import InpNum from '../components/form/InpNum'
-import Modal from '../components/ui/modal'
-import rModal from '../components/ui/rModal'
-// import Tabs from '~components/ui/slim-tabs'
+
 
 export default {
-  components: {
-    Modal,
-    InpNum,
-    rModal
-    // Tabs
-  },
+  //components: {},
   data () {
-    return {
-      showModal_1: false,
-      showModal_2: false,
-      showModal_3: false,
-      showModal_4: false
-    }
+    return {}
   }
 }
 </script>
 
 <style lang="styl">
 
+@import "~assets/settings.styl";
+
 #palette
   text-align center
   >*
     margin .7em
+
+
+// Элементы https://codepen.io/dimaZubkov/pen/PJzLJX
+
+
 
 </style>

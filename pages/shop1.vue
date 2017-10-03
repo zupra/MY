@@ -9,7 +9,7 @@
       //.btn.-lite(@click="show_rModal = true") toCart
 
   center
-    h1 Корзина 0.1
+    h1 Корзинка 0.1
   .flex_wr
     .product_item(v-for='(item,i) in products' :key="i")
       img(:src="'/img/shop/'+item.id+'.jpg'")
@@ -21,6 +21,7 @@
 
   r-modal(:show.sync="show_rModal")
     #Cart
+      | Total {{count}} / {{total}}
       h3(v-if="!cart.length") Ваша корзина пуста 
       .flex_col(v-for="(item,i) in cart" :key="i")
         img(:src="'/img/shop/'+item.id+'.jpg'")
@@ -114,12 +115,12 @@ export default {
     }
   },
   computed: {
-    count: function() {
+    count() {
       return this.cart.reduce(function(n, cart) {
         return cart.qty + n;
       }, 0);
     },
-    total: function() {
+    total() {
       return this.cart
         .reduce(function(n, cart) {
           return cart.price * cart.qty + n;
@@ -132,7 +133,7 @@ export default {
       this.cart.push(product);
     },
     unblock(id) {
-      for (var i = 0; i < this.products.length; i++) {
+      for (let i = 0; i < this.products.length; i++) {
         if (this.products[i].id === id) {
           delete this.products[i].qty;
           //this.$delete(this.products[i], qty);
@@ -155,6 +156,10 @@ export default {
 
 @import "../assets/settings.styl";
 
+
+#shop
+  margin-top 1em
+
 #topLine
   position: fixed
   z-index: 5
@@ -176,7 +181,7 @@ export default {
 
 
 #cartInfo
-  background #5d9cec //#CCC
+  background #C4D1CC //#CCC
   color #FFF
   padding-left 2em
   border-radius 0 0 0 1em

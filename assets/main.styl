@@ -1,5 +1,9 @@
 @charset "UTF-8"
 
+//@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700|Comfortaa:300,400&subset=latin,cyrillic');
+//@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700&subset=cyrillic')
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&subset=cyrillic')
+
 *
   margin 0
   padding 0
@@ -11,19 +15,26 @@
 @import 'settings'
 
 body
-  font 100%/1.6 sans-serif
+  //'Roboto Condensed'
+  font 100%/1.6 'Roboto', 'Helvetica Neue', sans-serif;
   color #444
+
 
 
 h1,h2,h3,h4,h5,p
   margin 1em 0 .75em
+  //margin 0 0 .75em
 .H1,h1,h2,h3,h4
   line-height 1.2
 h1,h2
   color $header
   font-weight: 400
+  -moz-osx-font-smoothing: grayscale
+  -webkit-font-smoothing: antialiased
 a
   color $link
+
+
 p
   margin-bottom 1em
 
@@ -36,13 +47,7 @@ hr
   margin: 3em
 
 
-ul,ol
-  &.textLi
-    //list-style:square inside url("/images/blueball.gif");
-    //list-style inside
-    //margin 1em 2em
-    //margin-right 0
-    list-style-position inside
+
 
 
 // img
@@ -94,16 +99,33 @@ i.tag
     padding 1em
     box-shadow 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)
 
-nav
-  &.card
-    margin 1em
-    display inline-block
-    box-shadow 0 .2em 1.4em 0 rgba(0, 0, 0, 0.2)
-    a
-      display block
-      text-decoration none
-      padding .7em 1em
-      border-top 1px solid #EFEFEF
+
+
+ul,ol
+  list-style none
+.textLi
+  padding 1em 0 1em 3em
+  //list-style-position inside
+ul.textLi
+  list-style-type: square
+ol.textLi
+  list-style-type decimal
+
+.Card
+  margin 1em
+  //display inline-block
+  box-shadow 0 .2em 1.4em 0 rgba(0, 0, 0, 0.2)
+  >*
+    padding .7em 1em
+    border-top 1px solid #EFEFEF
+    cursor pointer
+    &.active
+      background #f9f9f9
+  //nav
+  >a
+    display block
+    text-decoration none
+    
 
 
 .w33
@@ -114,11 +136,25 @@ nav
     width 50%
 
 
+pre
+  max-height 300px
+  overflow overlay
+  border 1px dashed
+  margin 1em 0
+  white-space pre-wrap
+
+.offsetBlock
+  text-align center
+  margin 0 -1em
+  background $bg_body
+  //padding 2em 2em 1em
+  padding 1em
 
 
 //@import 'mixin'
 //@import 'tipograf'
-//@import 'el'
+@import 'el'
 //@import 'form'
 @import 'form'
 @import 'action'
+@import 'comp/modal'

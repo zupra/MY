@@ -55,10 +55,8 @@ div.CSS
 <style lang="styl">
 
 
-$fill = #f1f1f1 //skyblue
-
-$green = #26a69a
-
+$fill = #f1f1f1 //#5DA449 skyblue
+$border = 2px solid #777
 
 // .CSS
 //   h1
@@ -73,7 +71,7 @@ $green = #26a69a
   
 .parent
   border: 5px solid $fill
-  max-width: 700px
+  //max-width: 700px
   margin: 2em auto 0
 
 .parent 
@@ -216,14 +214,14 @@ $green = #26a69a
     &:nth-child(2)
       order 3
       font-size 2em
-      border 1px solid $green
+      border $border
 .v_25
   .item
     width 20%
     &:nth-child(2)
       flex-grow: 3
       font-size 2em
-      border 1px solid $green
+      border $border
           
 .v_26
   .item
@@ -231,7 +229,7 @@ $green = #26a69a
     &:nth-child(2)
       flex-shrink: 2
       font-size 2em
-      border 1px solid $green
+      border $border
 
       
 .v_27
@@ -240,7 +238,7 @@ $green = #26a69a
     &:nth-child(2)
       flex-basis: 50px
       font-size 2em
-      border 1px solid $green
+      border $border
 
 .v_28
   .item
@@ -248,14 +246,14 @@ $green = #26a69a
     &:nth-child(2)
       align-self: center;
       font-size 2em
-      border 1px solid $green
+      border $border
 .v_29
   .item
     width 20%
     &:nth-child(2)
       align-self: flex-end;
       font-size 2em
-      border 1px solid $green
+      border $border
 .v_30
   .item
     width 20%
@@ -263,6 +261,6 @@ $green = #26a69a
       align-self: stretch
       height: auto
       font-size 2em
-      border 1px solid $green
+      border $border
 
 </style>

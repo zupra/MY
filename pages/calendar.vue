@@ -2,7 +2,7 @@
 
 div
   .calendarEL
-    input.-XL(@click="show = !show", :value="value", placeholder="выбрать дату")
+    input.-XL(readonly @click="show = !show", :value="value", placeholder="выбрать дату")
 
     .calendar(v-show="show")
       .head.flex
@@ -166,24 +166,15 @@ data() {
 
 </script>
 
-<style lang="styl">
+<style lang="styl" scoped>
 
 @import "../assets/settings.styl";
 
 
 
-// .app_input  
-//   border-radius 0.25em
-//   border 2px solid #CCC
-//   font-size 1.5rem
-//   padding 0.5em 1em
-
-
 // ==== >>> calendar
 .calendarEL
   position relative
-  //padding 1em
-  //text-align cente
 
 $clr_red = #d64942
 $width = 305px

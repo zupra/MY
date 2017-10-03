@@ -1,18 +1,9 @@
 <template lang="pug">
 
 div
-  
-
-  // svg#burger_toNav(@click="show_sidebar = !show_sidebar", :class="{opacity_Off: !show_sidebar}", width='90', height='44')
-  //   rect(x="14", y="6", width="32", height="32", fill="none", stroke='gold', stroke-width='2')
-  //   use(xmlns:xlink='http://www.w3.org/1999/xlink', xlink:href='#burgerSVG')
-
   center
     h1 Кинозал 0.1
-
-
   hr
-
   .flex.card_List
     dl
       dt available
@@ -30,35 +21,38 @@ div
         svg.Armchair
           use(class="soldout", xmlns:xlink='http://www.w3.org/1999/xlink', xlink:href='#armchair')
 
-    div
-      b Вы забронировали:
-      // {{booked_List}}
-      ol.textLi
-        li NULL
-        li NULL
-
-
   hr
-  #cinemaHall
-    // each item in [1,2,3,4,5,6,7,8,9,10]
-    //   svg.Armchair
-    //     use(xmlns:xlink='http://www.w3.org/1999/xlink', xlink:href='#armchair')
 
 
-    svg.Armchair(v-for="(item,i) in seats[0]", @click=" seats[0][i].status == 'available' ? seats[0][i].status = 'booked' : null ")
-      use(:class="(item.status)" xmlns:xlink='http://www.w3.org/1999/xlink', xlink:href='#armchair')
+  //pre {{booked}}
 
-    br
-    svg.Armchair(v-for="(item,i) in seats[1]", @click=" seats[1][i].status == 'available' ? seats[1][i].status = 'booked' : null ")
-      use(:class="(item.status)" xmlns:xlink='http://www.w3.org/1999/xlink', xlink:href='#armchair')
-    br
-    svg.Armchair(v-for="(item,i) in seats[2]", @click=" seats[2][i].status == 'available' ? seats[2][i].status = 'booked' : null ")
-      use(:class="booked ? booked : (item.status)" xmlns:xlink='http://www.w3.org/1999/xlink', xlink:href='#armchair')
+  .flex_sb
+    #cinemaHall
+      //@click=" seats[1][i].status == 'available' ? seats[1][i].status = 'booked' : null ")
+      svg.Armchair(v-for="(item,i) in seats[0]", :key="i",
+        @click="selectSeat( 0, i )")
+        use(:class="(item.status)" xmlns:xlink='http://www.w3.org/1999/xlink', xlink:href='#armchair')
+
+      br
+      svg.Armchair(v-for="(item,i) in seats[1]", :key="i",
+        @click="selectSeat( 1, i )")
+        use(:class="(item.status)" xmlns:xlink='http://www.w3.org/1999/xlink', xlink:href='#armchair')
+      br
+      svg.Armchair(v-for="(item,i) in seats[2]", :key="i",
+        @click="selectSeat( 2, i )")
+        use(:class="(item.status)" xmlns:xlink='http://www.w3.org/1999/xlink', xlink:href='#armchair')
+
+    div
+      h2 Вы забронировали:
+      ol.Card
+        li(v-for="(item,i) in booked") 
+          | {{item.row}} ряд : {{item.seat}} место 
+          i.tag(@click="del(i, item)") del
 
   svg(style='display: none', viewbox='0 0 44 44', xmlns='http://www.w3.org/2000/svg')
     symbol#armchair
       rect(x='6', y='4', width='32', height='32', rx='3', fill='', stroke="none")
-      path(stroke='', stroke-width='6', fill='none', d='M2,10 2,40 42,40 42,10' )
+      path(stroke='', stroke-width='4', fill='none', d='M2,10 2,40 42,40 42,10' )
 
 
 </template>
@@ -205,20 +199,44 @@ export default {
     return {
       //show_rModal: false,
       seats: seats,
-      //selection: []
+      booked: []
     }
   },
   computed: {
-    booked_List() {
-      return this.seats.filter(item => item.status == 'booked')
-
-    }
+    // booked_List() {
+    //   return this.seats.filter(item => item.status == 'booked')
+    // }
   },
   methods: {
-    //selectSeat(idx) {},
+    selectSeat(row, seat) {
+
+      var Seat = this.seats[row][seat];
+
+      // switch( Seat ) {
+      //   case 'available':
+      //     Seat.status = 'booked';
+      //     //this.booked.push({row:row +1,seat:seat +1})
+      //   case 'booked':
+      //     Seat.status = 'available';
+      //   default:
+      //     break
+      // }
+      if (Seat.status == 'available') {
+
+        Seat.status = 'booked';
+        this.booked.push({row:row +1,seat:seat +1});
+        return
+      } else return
+    },
+    del(index, item) {
+      this.seats[item.row -1][item.seat -1].status = 'available';
+      this.booked.splice(index, 1);
+    }
   }
 
 }
+
+
 
 
 </script>
@@ -233,24 +251,32 @@ export default {
   width 44px
   height 44px
 
-//https://dribbble.com/shots/3827834-Cinema-UI/attachments/865899
-//http://prgssr.ru/development/oformlenie-soderzhimogo-use-v-svg-s-pomoshyu-css.html
+// https://dribbble.com/shots/3827834-Cinema-UI/attachments/865899
+// http://prgssr.ru/development/oformlenie-soderzhimogo-use-v-svg-s-pomoshyu-css.html
 //use
 .soldout
-  fill #CCC
-  stroke #CCC
+  fill #EEE
+  stroke #EEE
   &:hover
     cursor default
 
 .available
-  fill $orange
-  stroke $orange
+
+  fill $blue //+ 40%
+  stroke $blue + 40%
+
+
   &:hover
-    fill $green
-    stroke $green
+    //outline 2px solid $red
+    //outline-offset 1px
+    
+    fill $orange + 50 //10%
+
+    stroke $green + 30
+
 .booked
-  fill $blue
-  stroke $blue
+  fill $orange //+ 50
+  stroke $orange //+ 50
 
 //&.soldout
 //&.available

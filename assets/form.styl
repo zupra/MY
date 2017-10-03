@@ -19,12 +19,18 @@
 
 
 // ? .flex_col
-form, .form
+.form
+  display flex
+  flex-direction column
+
   //margin 1em 0
   input, textarea, select
     margin-bottom .7em
     //display block
     //width 100%
+
+
+
 
 
 input, select, textarea, button
@@ -58,9 +64,9 @@ label, select
 .search
   padding-left 2.4em
   background url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='13' height='13'><g stroke-width='2' stroke='blueviolet'><circle cx='5' cy='5'  r='4' style='fill:none;' /><line x1='9' y1='9' x2='13' y2='13' /></g></svg>") 1em 50% no-repeat
-  &:focus
-    padding-left .75rem //inherit
-    background none
+  // &:focus
+  //   padding-left .75rem //inherit
+  //   background none
 
 
 
