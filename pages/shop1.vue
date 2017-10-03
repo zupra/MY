@@ -38,15 +38,66 @@
 <script>
 
 const products = [
-  { id: 1, title: "black", price: 99},
-  { id: 2, title: "dark-blue", price: 99},
-  { id: 3, title: "green", price: 99},
-  { id: 4, title: "grey", price: 99},
-  { id: 5, title: "light-blue", price: 99},
-  { id: 6, title: "pink", price: 99},
-  { id: 7, title: "purple", price: 99},
-  { id: 8, title: "red", price: 99},
-  { id: 9, title: "white", price: 99}
+  {
+    id: 1,
+    name: "black Ninja",
+    price: 99
+  },
+  {
+    id: 2,
+    name: "Happy Ninja",
+    price: 99
+  },
+  {
+    id: 3,
+    name: "Hoodie Ninja",
+    price: 99
+  },
+  {
+    id: 4,
+    name: "Hoodie black",
+    price: 99
+  },
+  {
+    id: 5,
+    name: "Hoodie pink",
+    price: 99
+  },
+  {
+    id: 6,
+    name: "Patient Ninja",
+    price: 99
+  },
+  {
+    id: 7,
+    name: "WTF Ninja",
+    price: 99
+  },
+  {
+    id: 8,
+    name: "WTF-2 Ninja",
+    price: 99
+  },
+  {
+    id: 9,
+    name: "Red WOO",
+    price: 99
+  },
+  {
+    id: 10,
+    name: "Blue WOO",
+    price: 99
+  },
+  {
+    id: 11,
+    name: "Simple Ninja",
+    price: 99
+  },
+  {
+    id: 12,
+    name: "Red Ninja",
+    price: 99
+  }
 ];
 
 import rModal from '../components/ui/rModal';
@@ -83,8 +134,8 @@ export default {
     unblock(id) {
       for (var i = 0; i < this.products.length; i++) {
         if (this.products[i].id === id) {
-          //delete this.products[i].qty;
-          this.$delete(this.products[i], qty);
+          delete this.products[i].qty;
+          //this.$delete(this.products[i], qty);
           break;
         }
       }
