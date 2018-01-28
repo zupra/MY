@@ -125,11 +125,13 @@ div
 </template>
 
 <script>
-import InpNum from '../components/form/InpNum'
+//import InpNum from '../components/form/InpNum'
 
 
 export default {
-  //components: {},
+  // components: {
+  //   InpNum
+  // },
   data () {
     return {}
   }

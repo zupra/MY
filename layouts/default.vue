@@ -110,15 +110,15 @@ export default {
       show_sidebar: true,
       keyword:'',
       pages: [
-        {url:'shop1',name:'MiniShop_1'},
-        {url:'kino',name:'Kинозал'},
-        {url:'elem',name:'Елементы'},
-        {url:'select',name:'Селект-поиск'},
-        {url:'calendar_1',name:'Календарь_1'},
-        {url:'calendar',name:'Календарь_2'},
-        {url:'tabs_demo',name:'Табы'},
-        {url:'slider_1',name:'Карусельки'},
-        {url:'forms',name:'Формы'},
+        {url:'/shop1',name:'MiniShop_1'},
+        {url:'/kino',name:'Kинозал'},
+        {url:'/elem',name:'Елементы'},
+        {url:'/select',name:'Селект-поиск'},
+        {url:'/calendar_1',name:'Календарь_1'},
+        {url:'/calendar',name:'Календарь_2'},
+        {url:'/tabs_demo',name:'Табы'},
+        {url:'/slider_1',name:'Карусельки'},
+        {url:'/forms',name:'Формы'},
 
       ],
       // Radio
@@ -155,6 +155,28 @@ export default {
       this.$refs.audioSvg.unpauseAnimations();
     }
 
+  },
+  mounted() {
+    //https://codepen.io/svinkle/pen/owmgy?editors=1010
+
+    const
+      _this = this, 
+      mediaQuery = window.matchMedia('(min-width: 560px)');
+
+    mediaQuery.addListener(doSomething);
+
+
+    function doSomething(mediaQuery) {
+      if (!mediaQuery.matches) {
+        //_this.show_sidebar = false;
+        document.body.style.backgroundColor = 'CornflowerBlue';
+      } 
+      else {
+        document.body.style.backgroundColor = '#FFF';
+      }
+    }
+    // On load
+    doSomething(mediaQuery);
   }
 }
 </script>

@@ -110,9 +110,9 @@ export default {
     //   .then(resp => resp.json())
     //   .then((data) => this.users = data);
 
-    fetch('//jsonplaceholder.typicode.com/posts')
-      .then(resp => resp.json())
-      .then((data) => this.options = data);
+    // fetch('//jsonplaceholder.typicode.com/posts')
+    //   .then(resp => resp.json())
+    //   .then((data) => this.options = data);
     
   }
 
@@ -132,7 +132,7 @@ $lh = 2em
   height $lh *10
   width $lh *10
   border-top 1px dotted #EEE
-  overflow overlay
+  overflow-y scroll
   li
     line-height $lh
     border-top 1px solid #EEE

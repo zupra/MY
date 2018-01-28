@@ -36,7 +36,7 @@ export default {
 
 
   //! Imp
-  overflow overlay
+  overflow scroll
 
   animation rModal .2s .3s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards	//ease-in
   transform translateX(100%)
